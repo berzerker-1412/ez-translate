@@ -33,7 +33,11 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     } else if (request.type === 'startScreenshotSelection') {
         startScreenshotSelectionOverlay();
     } else if (request.type === 'showImageTranslationResult') {
-        showImageTranslationResultPopover(request.translation || '', false);
+        if (request.rect) {
+            injectTranslationOverlay(request.translation || '', request.rect, false);
+        } else {
+            showImageTranslationResultPopover(request.translation || '', false);
+        }
     }
 });
 
@@ -513,20 +517,17 @@ function startScreenshotSelectionOverlay() {
     translateBtn.addEventListener('click', async (ev) => {
         ev.stopPropagation();
         if (!selectionRect) return;
-        // 先显示加载中的弹窗
-        const waitingText = chrome.i18n.getMessage('statusTranslating') || 'Translating...';
-        showImageTranslationResultPopover(waitingText, true);
-        // ask background to capture and crop
-        console.log('[LLM-Translate] Requesting captureAndTranslateImage', selectionRect);
-        chrome.runtime.sendMessage({ type: 'captureAndTranslateImage', rect: selectionRect }, (resp) => {
+        const capturedRect = { ...selectionRect };
+        // Show loading overlay at the selected position
+        injectTranslationOverlay(chrome.i18n.getMessage('statusTranslating') || 'Translating...', capturedRect, true);
+        console.log('[LLM-Translate] Requesting captureAndTranslateImage', capturedRect);
+        chrome.runtime.sendMessage({ type: 'captureAndTranslateImage', rect: capturedRect }, (resp) => {
             if (chrome.runtime.lastError) {
-                console.error('[LLM-Translate] captureAndTranslateImage error:', chrome.runtime.lastError.message);
-                showImageTranslationResultPopover(`Error: ${chrome.runtime.lastError.message}`, false);
+                injectTranslationOverlay(`Error: ${chrome.runtime.lastError.message}`, capturedRect, false);
             } else if (resp && resp.error) {
-                console.error('[LLM-Translate] captureAndTranslateImage response error:', resp.error);
-                showImageTranslationResultPopover(`Error: ${resp.error}`, false);
-            } else {
-                console.log('[LLM-Translate] captureAndTranslateImage response ok');
+                injectTranslationOverlay(`Error: ${resp.error}`, capturedRect, false);
+            } else if (resp && resp.translation) {
+                injectTranslationOverlay(resp.translation, capturedRect, false);
             }
         });
         cleanup();
@@ -536,4 +537,69 @@ function startScreenshotSelectionOverlay() {
     selectionOverlay.addEventListener('mousedown', onMouseDown, true);
     selectionOverlay.addEventListener('mousemove', onMouseMove, true);
     selectionOverlay.addEventListener('mouseup', onMouseUp, true);
+}
+
+// --- Inject translation overlay directly over the selected area ---
+function injectTranslationOverlay(translation, rect, isLoading) {
+    const OVERLAY_ID = 'llm-translate-injection-overlay';
+
+    // Update existing overlay if present
+    const existing = document.getElementById(OVERLAY_ID);
+    if (existing) {
+        const textEl = existing.querySelector('#llm-inject-text');
+        const copyBtn = existing.querySelector('#llm-inject-copy');
+        if (textEl) textEl.textContent = translation;
+        if (copyBtn) copyBtn.style.display = isLoading ? 'none' : 'inline-block';
+        return;
+    }
+
+    const overlay = document.createElement('div');
+    overlay.id = OVERLAY_ID;
+    overlay.style.cssText = `
+        position: fixed;
+        left: ${rect.x}px;
+        top: ${rect.y}px;
+        width: ${rect.width}px;
+        min-height: ${rect.height}px;
+        max-height: ${Math.max(rect.height, 200)}px;
+        background: rgba(255,255,255,0.97);
+        border: 2px solid #4285f4;
+        border-radius: 6px;
+        z-index: 2147483647;
+        overflow-y: auto;
+        box-sizing: border-box;
+        padding: 8px 10px;
+        font-family: sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #222;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    `;
+
+    overlay.innerHTML = `
+        <div style="display:flex;justify-content:flex-end;gap:6px;margin-bottom:4px;">
+            <button id="llm-inject-copy" title="Copy" style="background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;padding:2px 6px;font-size:13px;">📋</button>
+            <button id="llm-inject-close" title="Close" style="background:none;border:1px solid #ccc;border-radius:4px;cursor:pointer;padding:2px 6px;font-size:13px;">✕</button>
+        </div>
+        <div id="llm-inject-text" style="white-space:pre-wrap;word-break:break-word;"></div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    const textEl = overlay.querySelector('#llm-inject-text');
+    const copyBtn = overlay.querySelector('#llm-inject-copy');
+    const closeBtn = overlay.querySelector('#llm-inject-close');
+
+    textEl.textContent = translation;
+    copyBtn.style.display = isLoading ? 'none' : 'inline-block';
+
+    closeBtn.addEventListener('click', () => overlay.remove());
+    copyBtn.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText(textEl.textContent || '');
+            const orig = copyBtn.textContent;
+            copyBtn.textContent = '✅';
+            setTimeout(() => { copyBtn.textContent = orig; }, 1200);
+        } catch {}
+    });
 }

@@ -719,10 +719,10 @@ async function handleCaptureAndTranslateImage(rect, sender, sendResponse) {
             throw new Error(`未知的模型提供商: ${provider}`);
         }
 
-        // Send to content script to show result popover with copy
+        // Send to content script to inject overlay at the original rect position
         if (sender && sender.tab && sender.tab.id) {
             console.log('[LLM-Translate] sending showImageTranslationResult');
-            chrome.tabs.sendMessage(sender.tab.id, { type: 'showImageTranslationResult', translation });
+            chrome.tabs.sendMessage(sender.tab.id, { type: 'showImageTranslationResult', translation, rect });
         }
         sendResponse({ translation });
     } catch (e) {

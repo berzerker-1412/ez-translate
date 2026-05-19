@@ -826,9 +826,11 @@ async function visionTranslateOllama(imageDataUrl) {
 }
 
 async function visionTranslateMinimax(imageDataUrl) {
-    const { minimaxApiKey, minimaxSelectedModel, targetLanguage, secondTargetLanguage } = await chrome.storage.local.get(['minimaxApiKey', 'minimaxSelectedModel', 'targetLanguage', 'secondTargetLanguage']);
-    const apiKey = minimaxApiKey; const modelName = minimaxSelectedModel;
-    if (!apiKey || !modelName) throw new Error('MiniMax API 或模型未配置');
+    const { minimaxApiKey, targetLanguage, secondTargetLanguage } = await chrome.storage.local.get(['minimaxApiKey', 'targetLanguage', 'secondTargetLanguage']);
+    const apiKey = minimaxApiKey;
+    if (!apiKey) throw new Error('MiniMax API 未配置');
+    // Always use the dedicated image understanding model for vision tasks
+    const modelName = 'MiniMax-VL-01';
     const target = mapLangKeyToEnName(targetLanguage || 'langSimplifiedChinese');
     const second = mapLangKeyToEnName(secondTargetLanguage || 'langEnglish');
     const userPrompt = chrome.i18n.getMessage('imageTranslationPrompt', [target, second]);

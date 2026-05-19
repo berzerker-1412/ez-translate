@@ -209,6 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchMinimaxModels(apiKey) {
         const modelSelect = elements.providers.minimax.modelSelect;
         const knownModels = [
+            'MiniMax-M2-07',
             'MiniMax-Text-01',
             'MiniMax-VL-01',
             'abab6.5s-chat',

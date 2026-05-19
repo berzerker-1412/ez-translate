@@ -71,6 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 modelSelect: document.getElementById('ollama-model-select'),
                 fetchButton: document.querySelector('.fetch-models-button[data-provider="ollama"]'),
             },
+            minimax: {
+                apiKeyInput: document.getElementById('minimax-api-key'),
+                modelSelect: document.getElementById('minimax-model-select'),
+                fetchButton: document.querySelector('.fetch-models-button[data-provider="minimax"]'),
+            },
         },
         targetLanguages: {
             defaultTargetLanguageSelect: document.getElementById('default-target-language'),
@@ -109,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (providerName === 'gemini') await fetchGeminiModels(inputValue);
             else if (providerName === 'siliconflow') await fetchSiliconFlowModels(inputValue);
             else if (providerName === 'openrouter') await fetchOpenRouterModels(inputValue);
+            else if (providerName === 'minimax') await fetchMinimaxModels(inputValue);
         }
     }
 
@@ -200,6 +206,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    async function fetchMinimaxModels(apiKey) {
+        const modelSelect = elements.providers.minimax.modelSelect;
+        modelSelect.innerHTML = `<option>${chrome.i18n.getMessage('statusFetchingModels')}</option>`;
+        try {
+            const response = await fetch('https://api.minimax.chat/v1/models', {
+                headers: { 'Authorization': `Bearer ${apiKey}` }
+            });
+            if (!response.ok) throw new Error((await response.json()).error?.message || 'Failed to fetch models');
+            const data = await response.json();
+            const chatModels = (data.data || []).filter(m => m.id && !m.id.includes('embedding'));
+            populateModelSelect(modelSelect, chatModels, m => m.id, m => m.id);
+            showStatus(chrome.i18n.getMessage('statusModelsSuccess'), 'success');
+            loadSelectedModel('minimax');
+        } catch (error) {
+            modelSelect.innerHTML = `<option>${chrome.i18n.getMessage('statusModelsFailed', [error.message])}</option>`;
+            showStatus(chrome.i18n.getMessage('statusModelsFailed', [error.message]), 'error');
+        }
+    }
+
     function populateModelSelect(selectElement, models, valueFn, textFn) {
         selectElement.innerHTML = '';
         if (models.length === 0) {
@@ -230,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadAllSettings() {
-        const keys = ['activeProvider', 'geminiApiKey', 'siliconflowApiKey', 'openrouterApiKey', 'ollamaUrl', 'geminiSelectedModel', 'siliconflowSelectedModel', 'openrouterSelectedModel', 'ollamaSelectedModel', 'targetLanguage', 'secondTargetLanguage'];
+        const keys = ['activeProvider', 'geminiApiKey', 'siliconflowApiKey', 'openrouterApiKey', 'minimaxApiKey', 'ollamaUrl', 'geminiSelectedModel', 'siliconflowSelectedModel', 'openrouterSelectedModel', 'minimaxSelectedModel', 'ollamaSelectedModel', 'targetLanguage', 'secondTargetLanguage'];
         chrome.storage.local.get(keys, (result) => {
             if (result.activeProvider) switchTab(result.activeProvider);
             if (result.geminiApiKey) {
@@ -244,6 +269,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (result.openrouterApiKey) {
                 elements.providers.openrouter.apiKeyInput.value = result.openrouterApiKey;
                 fetchOpenRouterModels(result.openrouterApiKey);
+            }
+            if (result.minimaxApiKey) {
+                elements.providers.minimax.apiKeyInput.value = result.minimaxApiKey;
+                fetchMinimaxModels(result.minimaxApiKey);
             }
             if (result.ollamaUrl) {
                 elements.providers.ollama.apiKeyInput.value = result.ollamaUrl;

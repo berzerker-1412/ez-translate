@@ -43,6 +43,10 @@
         "message": "Ollama",
         "description": "Ollamaプロバイダータブのラベル。"
     },
+    "minimaxProvider": {
+        "message": "MiniMax",
+        "description": "MiniMaxプロバイダータブのラベル。"
+    },
     "geminiApiKeyLabel": {
         "message": "Gemini APIキー",
         "description": "Gemini APIキー入力のラベル。"
@@ -54,6 +58,10 @@
     "openrouterApiKeyLabel": {
         "message": "OpenRouter APIキー",
         "description": "OpenRouter APIキー入力のラベル。"
+    },
+    "minimaxApiKeyLabel": {
+        "message": "MiniMax APIキー",
+        "description": "MiniMax APIキー入力のラベル。"
     },
     "ollamaUrlLabel": {
         "message": "OllamaサーバーURL",
@@ -79,6 +87,10 @@
         "message": "OpenRouter APIキーを入力してください",
         "description": "OpenRouter APIキー入力のプレースホルダー。"
     },
+    "minimaxApiPlaceholder": {
+        "message": "MiniMax APIキーを入力してください",
+        "description": "MiniMax APIキー入力のプレースホルダー。"
+    },
     "ollamaUrlPlaceholder": {
         "message": "OllamaサーバーURLを入力してください（例：http://localhost:11434）",
         "description": "Ollama URL入力のプレースホルダー。"
@@ -102,6 +114,10 @@
     "openrouterModelHint": {
         "message": "画像入力をサポートする無料モデルのみが表示されます。",
         "description": "OpenRouterモデルを選択するためのヒント。"
+    },
+    "minimaxModelHint": {
+        "message": "推奨: MiniMax-Text-01またはabab6.5s-chat。",
+        "description": "MiniMaxモデルを選択するためのヒント。"
     },
     "ollamaModelHint": {
         "message": "ローカルにインストールされているOllamaモデルを選択してください。",

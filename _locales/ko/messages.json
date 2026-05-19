@@ -43,6 +43,10 @@
         "message": "Ollama",
         "description": "Ollama 공급자 탭의 라벨입니다."
     },
+    "minimaxProvider": {
+        "message": "MiniMax",
+        "description": "MiniMax 공급자 탭의 라벨입니다."
+    },
     "geminiApiKeyLabel": {
         "message": "Gemini API 키",
         "description": "Gemini API 키 입력에 대한 라벨입니다."
@@ -54,6 +58,10 @@
     "openrouterApiKeyLabel": {
         "message": "OpenRouter API 키",
         "description": "OpenRouter API 키 입력에 대한 라벨입니다."
+    },
+    "minimaxApiKeyLabel": {
+        "message": "MiniMax API 키",
+        "description": "MiniMax API 키 입력에 대한 라벨입니다."
     },
     "ollamaUrlLabel": {
         "message": "Ollama 서버 URL",
@@ -79,6 +87,10 @@
         "message": "OpenRouter API 키를 입력하세요",
         "description": "OpenRouter API 키 입력에 대한 자리 표시자입니다."
     },
+    "minimaxApiPlaceholder": {
+        "message": "MiniMax API 키를 입력하세요",
+        "description": "MiniMax API 키 입력에 대한 자리 표시자입니다."
+    },
     "ollamaUrlPlaceholder": {
         "message": "Ollama 서버 URL을 입력하세요 (예: http://localhost:11434)",
         "description": "Ollama URL 입력에 대한 자리 표시자입니다."
@@ -102,6 +114,10 @@
     "openrouterModelHint": {
         "message": "이미지 입력을 지원하는 무료 모델만 표시됩니다.",
         "description": "OpenRouter 모델 선택에 대한 힌트입니다."
+    },
+    "minimaxModelHint": {
+        "message": "권장: MiniMax-Text-01 또는 abab6.5s-chat.",
+        "description": "MiniMax 모델 선택에 대한 힌트입니다."
     },
     "ollamaModelHint": {
         "message": "Ollama에 로컬로 설치된 모든 모델을 선택하세요.",

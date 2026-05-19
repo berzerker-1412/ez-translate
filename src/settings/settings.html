@@ -13,6 +13,7 @@
         <button class="tab-button" data-provider="siliconflow" data-i18n="siliconflowProvider"></button>
         <button class="tab-button" data-provider="openrouter" data-i18n="openrouterProvider"></button>
         <button class="tab-button" data-provider="ollama" data-i18n="ollamaProvider"></button>
+        <button class="tab-button" data-provider="minimax" data-i18n="minimaxProvider"></button>
     </div>
 
     <!-- Gemini Settings -->
@@ -103,6 +104,28 @@
                 <a href="https://github.com/licon/llm-translate?tab=readme-ov-file#recommended-models" target="_blank" data-i18n="recommendedModelsLink"></a>
             </p>
             <select id="ollama-model-select"></select>
+        </div>
+    </div>
+
+    <!-- MiniMax Settings -->
+    <div id="minimax-settings" class="tab-content">
+        <div class="form-group">
+            <label for="minimax-api-key">
+                <span data-i18n="minimaxApiKeyLabel"></span>
+                <a href="https://platform.minimaxi.com/user-center/basic-information/interface-key" target="_blank" data-i18n="getApiKeyLink"></a>
+            </label>
+            <div class="api-key-container">
+                <input type="password" id="minimax-api-key" data-i18n-placeholder="minimaxApiPlaceholder">
+                <button class="fetch-models-button btn-action" data-provider="minimax" data-i18n="fetchModelsButton"></button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label data-i18n="modelSelectLabel"></label>
+            <p class="hint">
+                <span data-i18n="minimaxModelHint"></span>
+                <a href="https://platform.minimaxi.com/document/Models" target="_blank" data-i18n="recommendedModelsLink"></a>
+            </p>
+            <select id="minimax-model-select"></select>
         </div>
     </div>
 

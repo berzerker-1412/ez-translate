@@ -43,6 +43,10 @@
         "message": "Ollama",
         "description": "Надпись для вкладки провайдера Ollama."
     },
+    "minimaxProvider": {
+        "message": "MiniMax",
+        "description": "Надпись для вкладки провайдера MiniMax."
+    },
     "geminiApiKeyLabel": {
         "message": "Ключ API Gemini",
         "description": "Надпись для ввода ключа API Gemini."
@@ -54,6 +58,10 @@
     "openrouterApiKeyLabel": {
         "message": "Ключ API OpenRouter",
         "description": "Надпись для ввода ключа API OpenRouter."
+    },
+    "minimaxApiKeyLabel": {
+        "message": "API-ключ MiniMax",
+        "description": "Надпись для ввода API-ключа MiniMax."
     },
     "ollamaUrlLabel": {
         "message": "URL сервера Ollama",
@@ -79,6 +87,10 @@
         "message": "Введите ваш ключ API OpenRouter",
         "description": "Заполнитель для ввода ключа API OpenRouter."
     },
+    "minimaxApiPlaceholder": {
+        "message": "Введите ваш API-ключ MiniMax",
+        "description": "Заполнитель для ввода API-ключа MiniMax."
+    },
     "ollamaUrlPlaceholder": {
         "message": "Введите URL вашего сервера Ollama (например, http://localhost:11434)",
         "description": "Заполнитель для ввода URL Ollama."
@@ -102,6 +114,10 @@
     "openrouterModelHint": {
         "message": "Показываются только бесплатные модели, поддерживающие ввод изображений.",
         "description": "Подсказка по выбору модели OpenRouter."
+    },
+    "minimaxModelHint": {
+        "message": "Рекомендуется: MiniMax-Text-01 или abab6.5s-chat.",
+        "description": "Подсказка по выбору модели MiniMax."
     },
     "ollamaModelHint": {
         "message": "Выберите любую модель, установленную локально в Ollama.",

@@ -43,6 +43,10 @@
         "message": "ওলামা",
         "description": "ওলামা প্রদানকারী ট্যাবের জন্য লেবেল।"
     },
+    "minimaxProvider": {
+        "message": "MiniMax",
+        "description": "মিনিম্যাক্স প্রদানকারী ট্যাবের জন্য লেবেল।"
+    },
     "geminiApiKeyLabel": {
         "message": "জেমিনি এপিআই কী",
         "description": "জেমিনি এপিআই কী ইনপুটের জন্য লেবেল।"
@@ -54,6 +58,10 @@
     "openrouterApiKeyLabel": {
         "message": "OpenRouter API কী",
         "description": "OpenRouter API কী ইনপুটের জন্য লেবেল।"
+    },
+    "minimaxApiKeyLabel": {
+        "message": "MiniMax API কী",
+        "description": "মিনিম্যাক্স API কী ইনপুটের জন্য লেবেল।"
     },
     "ollamaUrlLabel": {
         "message": "ওলামা সার্ভার URL",
@@ -79,6 +87,10 @@
         "message": "আপনার OpenRouter API কী লিখুন",
         "description": "OpenRouter API কী ইনপুটের জন্য স্থানধারক।"
     },
+    "minimaxApiPlaceholder": {
+        "message": "আপনার MiniMax API কী লিখুন",
+        "description": "মিনিম্যাক্স API কী ইনপুটের জন্য স্থানধারক।"
+    },
     "ollamaUrlPlaceholder": {
         "message": "আপনার ওলামা সার্ভার URL লিখুন (যেমন, http://localhost:11434)",
         "description": "ওলামা URL ইনপুটের জন্য স্থানধারক।"
@@ -102,6 +114,10 @@
     "openrouterModelHint": {
         "message": "শুধুমাত্র বিনামূল্যের মডেল যা চিত্র ইনপুট সমর্থন করে সেগুলি দেখানো হয়।",
         "description": "OpenRouter মডেল নির্বাচন করার জন্য ইঙ্গিত।"
+    },
+    "minimaxModelHint": {
+        "message": "MiniMax-Text-01 বা abab6.5s-chat ব্যবহার করার পরামর্শ দেওয়া হয়।",
+        "description": "একটি মিনিম্যাক্স মডেল নির্বাচন করার জন্য ইঙ্গিত।"
     },
     "ollamaModelHint": {
         "message": "ওলামায় স্থানীয়ভাবে ইনস্টল করা যেকোনো মডেল নির্বাচন করুন।",

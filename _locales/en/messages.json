@@ -43,6 +43,10 @@
         "message": "Ollama",
         "description": "Label for the Ollama provider tab."
     },
+    "minimaxProvider": {
+        "message": "MiniMax",
+        "description": "Label for the MiniMax provider tab."
+    },
     "geminiApiKeyLabel": {
         "message": "Gemini API Key",
         "description": "Label for the Gemini API key input."
@@ -54,6 +58,10 @@
     "openrouterApiKeyLabel": {
         "message": "OpenRouter API Key",
         "description": "Label for the OpenRouter API key input."
+    },
+    "minimaxApiKeyLabel": {
+        "message": "MiniMax API Key",
+        "description": "Label for the MiniMax API key input."
     },
     "ollamaUrlLabel": {
         "message": "Ollama Server URL",
@@ -79,6 +87,10 @@
         "message": "Enter your OpenRouter API key",
         "description": "Placeholder for the OpenRouter API key input."
     },
+    "minimaxApiPlaceholder": {
+        "message": "Enter your MiniMax API key",
+        "description": "Placeholder for the MiniMax API key input."
+    },
     "ollamaUrlPlaceholder": {
         "message": "Enter your Ollama server URL (e.g., http://localhost:11434)",
         "description": "Placeholder for the Ollama URL input."
@@ -102,6 +114,10 @@
     "openrouterModelHint": {
         "message": "Only free models that support image input are shown.",
         "description": "Hint for selecting an OpenRouter model."
+    },
+    "minimaxModelHint": {
+        "message": "Recommended: MiniMax-Text-01 or abab6.5s-chat.",
+        "description": "Hint for selecting a MiniMax model."
     },
     "ollamaModelHint": {
         "message": "Select any model you have installed locally in Ollama.",

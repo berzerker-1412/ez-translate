@@ -43,6 +43,10 @@
         "message": "Ollama",
         "description": "تسمية علامة تبويب مزود Ollama."
     },
+    "minimaxProvider": {
+        "message": "MiniMax",
+        "description": "تسمية علامة تبويب مزود MiniMax."
+    },
     "geminiApiKeyLabel": {
         "message": "مفتاح Gemini API",
         "description": "تسمية حقل إدخال مفتاح Gemini API."
@@ -54,6 +58,10 @@
     "openrouterApiKeyLabel": {
         "message": "مفتاح OpenRouter API",
         "description": "تسمية حقل إدخال مفتاح OpenRouter API."
+    },
+    "minimaxApiKeyLabel": {
+        "message": "مفتاح MiniMax API",
+        "description": "تسمية حقل إدخال مفتاح MiniMax API."
     },
     "ollamaUrlLabel": {
         "message": "رابط خادم Ollama",
@@ -79,6 +87,10 @@
         "message": "أدخل مفتاح OpenRouter API الخاص بك",
         "description": "نص نائب لحقل إدخال مفتاح OpenRouter API."
     },
+    "minimaxApiPlaceholder": {
+        "message": "أدخل مفتاح MiniMax API الخاص بك",
+        "description": "نص نائب لحقل إدخال مفتاح MiniMax API."
+    },
     "ollamaUrlPlaceholder": {
         "message": "أدخل رابط خادم Ollama الخاص بك (مثال: http://localhost:11434)",
         "description": "نص نائب لحقل إدخال رابط Ollama."
@@ -102,6 +114,10 @@
     "openrouterModelHint": {
         "message": "يتم عرض النماذج المجانية فقط التي تدعم إدخال الصور.",
         "description": "تلميح لاختيار نموذج OpenRouter."
+    },
+    "minimaxModelHint": {
+        "message": "يوصى باستخدام MiniMax-Text-01 أو abab6.5s-chat.",
+        "description": "تلميح لاختيار نموذج MiniMax."
     },
     "ollamaModelHint": {
         "message": "اختر أي نموذج مثبت محليًا في Ollama.",

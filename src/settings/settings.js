@@ -208,21 +208,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchMinimaxModels(apiKey) {
         const modelSelect = elements.providers.minimax.modelSelect;
-        modelSelect.innerHTML = `<option>${chrome.i18n.getMessage('statusFetchingModels')}</option>`;
-        try {
-            const response = await fetch('https://api.minimax.chat/v1/models', {
-                headers: { 'Authorization': `Bearer ${apiKey}` }
-            });
-            if (!response.ok) throw new Error((await response.json()).error?.message || 'Failed to fetch models');
-            const data = await response.json();
-            const chatModels = (data.data || []).filter(m => m.id && !m.id.includes('embedding'));
-            populateModelSelect(modelSelect, chatModels, m => m.id, m => m.id);
-            showStatus(chrome.i18n.getMessage('statusModelsSuccess'), 'success');
-            loadSelectedModel('minimax');
-        } catch (error) {
-            modelSelect.innerHTML = `<option>${chrome.i18n.getMessage('statusModelsFailed', [error.message])}</option>`;
-            showStatus(chrome.i18n.getMessage('statusModelsFailed', [error.message]), 'error');
-        }
+        const knownModels = [
+            'MiniMax-Text-01',
+            'MiniMax-VL-01',
+            'abab6.5s-chat',
+            'abab6.5-chat',
+            'abab5.5s-chat',
+            'abab5.5-chat',
+        ];
+        populateModelSelect(modelSelect, knownModels, m => m, m => m);
+        showStatus(chrome.i18n.getMessage('statusModelsSuccess'), 'success');
+        loadSelectedModel('minimax');
     }
 
     function populateModelSelect(selectElement, models, valueFn, textFn) {

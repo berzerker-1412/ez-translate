@@ -117,18 +117,20 @@ document.addEventListener('mousedown', (event) => {
         // 检查是否有翻译弹窗存在
         const popover = document.querySelector('#llm-translate-popover');
         if (popover && popover.classList.contains('context-menu-popup')) {
-            // 对于右键菜单弹窗，使用更严格的关闭条件
-            // 只有当用户点击页面其他地方且不是在选择文本时才关闭
+            // context-menu-popup (screenshot/right-click translate result) only closes
+            // when the user explicitly clicks on the page AND there is no active selection.
+            // Ignore synthetic/programmatic events to avoid accidental dismissal on manga/reader sites.
+            if (!event.isTrusted) return;
             setTimeout(() => {
                 const selection = window.getSelection();
                 const hasSelection = selection && selection.toString().trim().length > 0;
-                
+
                 // 检查是否在弹窗内有选中的文本
-                const isSelectingInPopover = hasSelection && 
-                    selection.anchorNode && 
+                const isSelectingInPopover = hasSelection &&
+                    selection.anchorNode &&
                     (selection.anchorNode.closest('#llm-translate-popover') ||
                      (selection.anchorNode.parentNode && selection.anchorNode.parentNode.closest('#llm-translate-popover')));
-                
+
                 // 如果用户不是在弹窗内选择文本，且没有活跃的选择操作，则关闭弹窗
                 if (!isSelectingInPopover && !hasSelection) {
                     removeTranslationUI();
@@ -525,8 +527,9 @@ function startScreenshotSelectionOverlay() {
             } else if (resp && resp.error) {
                 console.error('[LLM-Translate] captureAndTranslateImage response error:', resp.error);
                 showImageTranslationResultPopover(`Error: ${resp.error}`, false);
-            } else {
-                console.log('[LLM-Translate] captureAndTranslateImage response ok');
+            } else if (resp && resp.translation) {
+                // Fallback: show result from sendResponse in case showImageTranslationResult message is delayed/lost
+                showImageTranslationResultPopover(resp.translation, false);
             }
         });
         cleanup();

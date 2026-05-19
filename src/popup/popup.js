@@ -8,6 +8,11 @@ function setupI18n() {
         const key = elem.getAttribute('data-i18n-placeholder');
         elem.placeholder = chrome.i18n.getMessage(key);
     });
+    document.querySelectorAll('[data-i18n-title]').forEach(elem => {
+        const key = elem.getAttribute('data-i18n-title');
+        const msg = chrome.i18n.getMessage(key);
+        if (msg) elem.title = msg;
+    });
     document.title = chrome.i18n.getMessage('popupTitle');
 }
 

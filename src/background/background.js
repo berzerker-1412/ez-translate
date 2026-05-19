@@ -820,8 +820,7 @@ async function visionTranslateOllama(imageDataUrl) {
 }
 
 function mapLangKeyToEnName(key) {
-    const map = { 'langEnglish':'English','langSimplifiedChinese':'Simplified Chinese','langTraditionalChinese':'Traditional Chinese' };
-    return map[key] || 'English';
+    return normalizeLanguageToEnglishName(key) || 'English';
 }
 
 // --- API 调用实现 ---

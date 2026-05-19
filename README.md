@@ -1,15 +1,15 @@
 <div align="center">
   <img src="icons/icon128.png" alt="EZ Translate Logo" width="128" height="128">
-  <h1>EZ Translate: Smart Browser Translation Plugin</h1>
+  <h1>EZ Translate: ปลั๊กอินแปลภาษาอัจฉริยะสำหรับเบราว์เซอร์</h1>
 </div>
 
-EZ Translate is a modern browser translation plugin that harnesses the power of Large Language Models (LLMs) to provide you with a more accurate, fluent, and context-aware web page translation experience.
+EZ Translate คือปลั๊กอินแปลภาษาสำหรับเบราว์เซอร์ที่ใช้พลังของ Large Language Models (LLMs) เพื่อให้การแปลภาษาบนเว็บเพจมีความแม่นยำ คล่องแคล่ว และเข้าใจบริบทมากกว่าที่เคย
 
-Unlike traditional machine translation, this plugin aims to understand the nuances of language through advanced AI technology, generating high-quality translations to help you easily overcome language barriers and efficiently access global information.
+ไม่เหมือนการแปลภาษาแบบดั้งเดิม ปลั๊กอินนี้ใช้เทคโนโลยี AI ขั้นสูงเพื่อทำความเข้าใจความละเอียดอ่อนของภาษา สร้างการแปลคุณภาพสูง ช่วยให้คุณก้าวข้ามอุปสรรคทางภาษาและเข้าถึงข้อมูลทั่วโลกได้อย่างง่ายดาย
 
-[查看中文版本 (View Chinese Version)](README_zh.md)
+[查看中文版本 (ดูเวอร์ชันภาษาจีน)](README_zh.md)
 
-## Supported LLM Providers
+## ผู้ให้บริการ LLM ที่รองรับ
 
 <div align="center">
   <table>
@@ -18,219 +18,224 @@ Unlike traditional machine translation, this plugin aims to understand the nuanc
         <a href="https://ai.google.dev/" target="_blank">
           <img src="logos/google-gemini.png" alt="Google Gemini" width="200"><br>
           <strong>Google Gemini</strong><br>
-          <small>Advanced AI model by Google</small>
+          <small>โมเดล AI ขั้นสูงจาก Google</small>
         </a>
       </td>
       <td align="center" width="200" height="200">
         <a href="https://cloud.siliconflow.cn/" target="_blank">
           <img src="logos/siliconflow.png" alt="Silicon Flow" width="200"><br>
           <strong>Silicon Flow</strong><br>
-          <small>Chinese AI platform</small>
+          <small>แพลตฟอร์ม AI จากจีน</small>
         </a>
       </td>
       <td align="center"  width="200" height="200">
         <a href="https://openrouter.ai/" target="_blank">
           <img src="logos/openrouter.png" alt="OpenRouter" width="200"><br>
           <strong>OpenRouter</strong><br>
-          <small>Unified AI model access</small>
+          <small>เข้าถึงโมเดล AI แบบรวมศูนย์</small>
         </a>
       </td>
       <td align="center" width="200" height="200">
         <a href="https://ollama.ai/" target="_blank">
           <img src="logos/ollama_logo.png" alt="Ollama" width="200"><br>
           <strong>Ollama</strong><br>
-          <small>Local AI deployment</small>
+          <small>รัน AI บนเครื่องของคุณเอง</small>
+        </a>
+      </td>
+      <td align="center" width="200" height="200">
+        <a href="https://platform.minimaxi.com/" target="_blank">
+          <img src="logos/minimax.png" alt="MiniMax" width="200"><br>
+          <strong>MiniMax</strong><br>
+          <small>โมเดล AI จากจีน</small>
         </a>
       </td>
     </tr>
   </table>
 </div>
 
-## Install via GitHub Releases (Manual)
+## การติดตั้งผ่าน GitHub Releases (ติดตั้งเอง)
 
-This method is recommended if you cannot access the Chrome Web Store.
+แนะนำวิธีนี้หากคุณไม่สามารถเข้าถึง Chrome Web Store ได้
 
-- Download the latest release `.zip` from GitHub Releases: [Latest Release](https://github.com/licon/llm-translate/releases/latest)
-- Unzip the downloaded file
+- ดาวน์โหลด `.zip` เวอร์ชันล่าสุดจาก GitHub Releases: [Latest Release](https://github.com/licon/llm-translate/releases/latest)
+- แตกไฟล์ที่ดาวน์โหลดมา
 - Chrome/Edge/Brave (Chromium-based):
-  - Open `chrome://extensions` (Edge: `edge://extensions`, Brave: `brave://extensions`)
-  - Enable "Developer mode"
-  - Click "Load unpacked" and select the unzipped folder that contains `manifest.json`
+  - เปิด `chrome://extensions` (Edge: `edge://extensions`, Brave: `brave://extensions`)
+  - เปิดใช้ "Developer mode"
+  - คลิก "Load unpacked" และเลือกโฟลเดอร์ที่แตกไฟล์ซึ่งมี `manifest.json` อยู่
 - Firefox:
-  - Open `about:debugging#/runtime/this-firefox`
-  - Click "Load Temporary Add-on..." and select the `manifest.json` inside the unzipped folder
-- To update later: re-download the latest `.zip`, unzip, and click "Reload" on the extension page
+  - เปิด `about:debugging#/runtime/this-firefox`
+  - คลิก "Load Temporary Add-on..." และเลือกไฟล์ `manifest.json` ในโฟลเดอร์ที่แตกไฟล์
+- อัปเดตในภายหลัง: ดาวน์โหลด `.zip` เวอร์ชันล่าสุดใหม่ แตกไฟล์ และคลิก "Reload" ในหน้า extension
 
-## Core Features
+## ฟีเจอร์หลัก
 
-*   **Multi-provider Support:** Supports configuring multiple Large Language Model providers (currently supports **Google Gemini**, **Silicon Flow**, **OpenRouter**, and **Ollama**), allowing you to freely choose the most suitable model.
-*   **Instant Hover Translation:** Select text on any web page, and a translation icon will appear next to your mouse. Click it to see the translation result in place for a smooth and uninterrupted experience.
-*   **🆕 Context Menu Translation:** Right-click on selected text to access translation options directly from the context menu. Choose between your primary or secondary target language for instant translation in a centered popup window.
-*   **📸 Screenshot Translation:** Capture any area of the webpage and translate text within images using AI vision capabilities. Perfect for translating text in images, PDFs, or screenshots.
-*   **⌨️ Keyboard Shortcuts:** Use `Ctrl+Shift+S` (Windows/Linux) or `Command+Shift+S` (Mac) to quickly activate screenshot translation mode.
-*   **Quick Popup Translation:** Click the browser toolbar icon to quickly enter or paste text for translation in a popup window.
-*   **Smart Auto-fill:** After selecting text, open the popup, and the selected text will be automatically filled into the input box, simplifying the operation.
-*   **One-Click Copy:** Copy translation results instantly with the built-in copy button, complete with visual feedback and multi-language support.
-*   **Secure Local Storage:** All API keys are securely stored in your local browser and are never uploaded.
-*   **Read Aloud and Copy:** In the popup window, you can read the input and output text aloud, and you can also copy the translation result with one click for convenient operation.
-*   **Smart Target Language Settings:** Configure default and second target languages for intelligent translation switching.
-*   **Intelligent Language Detection:** Automatically detects when source language matches target language and switches to second target language.
-*   **Comprehensive Language Support:** Supports 100+ languages with native translations for all interface elements.
+*   **รองรับหลายผู้ให้บริการ:** รองรับการตั้งค่าผู้ให้บริการ LLM หลายราย (ปัจจุบันรองรับ **Google Gemini**, **Silicon Flow**, **OpenRouter**, **Ollama** และ **MiniMax**) ให้คุณเลือกโมเดลที่เหมาะสมที่สุดได้อย่างอิสระ
+*   **แปลเมื่อวางเมาส์ทันที:** เลือกข้อความบนเว็บเพจใดก็ได้ จะมีไอคอนแปลปรากฏขึ้นข้างเมาส์ คลิกเพื่อดูผลการแปลได้เลยโดยไม่ขัดจังหวะการใช้งาน
+*   **🆕 แปลผ่านเมนูคลิกขวา:** คลิกขวาบนข้อความที่เลือกเพื่อเข้าถึงตัวเลือกการแปลโดยตรง เลือกภาษาเป้าหมายหลักหรือรองได้ทันที ผลลัพธ์จะแสดงในหน้าต่างป๊อปอัปกลางจอ
+*   **📸 แปลผ่านภาพหน้าจอ:** ถ่ายภาพพื้นที่ใดก็ได้บนเว็บเพจแล้วแปลข้อความในรูปภาพด้วยความสามารถ AI vision เหมาะสำหรับแปลข้อความในรูปภาพ PDF หรือภาพหน้าจอ
+*   **⌨️ คีย์ลัด:** ใช้ `Ctrl+Shift+S` (Windows/Linux) หรือ `Command+Shift+S` (Mac) เพื่อเปิดโหมดถ่ายภาพหน้าจอได้ทันที
+*   **แปลในป๊อปอัปด่วน:** คลิกไอคอนในแถบเครื่องมือเบราว์เซอร์เพื่อพิมพ์หรือวางข้อความแปลในป๊อปอัปได้อย่างรวดเร็ว
+*   **กรอกข้อความอัตโนมัติ:** หลังจากเลือกข้อความแล้วเปิดป๊อปอัป ข้อความที่เลือกจะถูกกรอกในช่องป้อนข้อมูลโดยอัตโนมัติ
+*   **คัดลอกด้วยคลิกเดียว:** คัดลอกผลการแปลได้ทันทีด้วยปุ่มคัดลอกในตัว พร้อม visual feedback
+*   **จัดเก็บอย่างปลอดภัยในเครื่อง:** API key ทั้งหมดจัดเก็บอย่างปลอดภัยในเบราว์เซอร์ของคุณ ไม่มีการอัปโหลดขึ้นไปที่ใด
+*   **อ่านออกเสียงและคัดลอก:** ในป๊อปอัปสามารถอ่านออกเสียงข้อความต้นฉบับและผลการแปล พร้อมคัดลอกผลลัพธ์ได้ด้วยคลิกเดียว
+*   **ตั้งค่าภาษาเป้าหมายอัจฉริยะ:** กำหนดภาษาเป้าหมายหลักและรองสำหรับการสลับภาษาแปลอย่างชาญฉลาด
+*   **ตรวจจับภาษาอัตโนมัติ:** ตรวจจับเมื่อภาษาต้นฉบับตรงกับภาษาเป้าหมายแล้วสลับไปใช้ภาษาเป้าหมายรองโดยอัตโนมัติ
+*   **รองรับภาษาครอบคลุม:** รองรับภาษามากกว่า 100 ภาษา รวมถึงภาษาไทย
 
 
-## Features to Implement
-*   **Custom Translation Styles:** Allow users to customize translation tone (formal, casual, technical, etc.).
-*   **Translation History:** Track and manage translation history with search and export capabilities.
-*   **Customizable Keyboard Shortcuts:** Allow users to customize keyboard shortcuts for different actions.
-*   **Offline Mode:** Enable basic translation functionality when internet connection is unavailable.
-*   **Advanced Settings Panel:** Enhanced configuration options for power users.
-*   **Dark Mode:** Implement dark theme support for better user experience in low-light environments.
+## ฟีเจอร์ที่วางแผนจะพัฒนา
+*   **รูปแบบการแปลแบบกำหนดเอง:** ให้ผู้ใช้ปรับน้ำเสียงการแปล (ทางการ ไม่เป็นทางการ เทคนิค ฯลฯ)
+*   **ประวัติการแปล:** ติดตามและจัดการประวัติการแปลพร้อมค้นหาและส่งออก
+*   **คีย์ลัดแบบกำหนดเอง:** ให้ผู้ใช้ปรับแต่งคีย์ลัดสำหรับการทำงานต่างๆ
+*   **โหมดออฟไลน์:** เปิดใช้ฟังก์ชันแปลขั้นพื้นฐานเมื่อไม่มีการเชื่อมต่ออินเทอร์เน็ต
+*   **แผงการตั้งค่าขั้นสูง:** ตัวเลือกการกำหนดค่าเพิ่มเติมสำหรับผู้ใช้ขั้นสูง
+*   **โหมดมืด:** รองรับธีมมืดเพื่อประสบการณ์ที่ดีขึ้นในสภาพแสงน้อย
 
-## Target Language Settings
+## การตั้งค่าภาษาเป้าหมาย
 
-EZ Translate now features intelligent target language management to enhance your translation experience:
+EZ Translate มีการจัดการภาษาเป้าหมายอย่างชาญฉลาดเพื่อเพิ่มประสบการณ์การแปลของคุณ:
 
-### **Default Target Language**
-- Set your preferred target language that syncs with the popup interface
-- Automatically used for all translation requests
-- Easily changeable through the settings page
+### **ภาษาเป้าหมายหลัก**
+- กำหนดภาษาที่ต้องการซึ่งซิงค์กับหน้าต่างป๊อปอัป
+- ใช้สำหรับคำขอแปลทั้งหมดโดยอัตโนมัติ
+- เปลี่ยนได้ง่ายผ่านหน้าการตั้งค่า
 
-### **Second Target Language**
-- Configure an additional target language for quick switching
-- Automatically activated when source language matches your default target
-- Perfect for bilingual users or when translating between similar languages
+### **ภาษาเป้าหมายรอง**
+- กำหนดภาษาเพิ่มเติมสำหรับสลับได้อย่างรวดเร็ว
+- เปิดใช้งานอัตโนมัติเมื่อภาษาต้นฉบับตรงกับภาษาเป้าหมายหลัก
+- เหมาะสำหรับผู้ใช้ที่ใช้สองภาษาหรือแปลระหว่างภาษาที่คล้ายกัน
 
-### **Smart Language Detection**
-- Automatically detects the source language of your text
-- Intelligently switches to second target language when source = default target
-- Prevents redundant translations and improves efficiency
+### **การตรวจจับภาษาอัจฉริยะ**
+- ตรวจจับภาษาต้นฉบับของข้อความโดยอัตโนมัติ
+- สลับไปใช้ภาษาเป้าหมายรองอย่างชาญฉลาดเมื่อต้นฉบับ = เป้าหมายหลัก
+- ป้องกันการแปลซ้ำซ้อนและเพิ่มประสิทธิภาพ
 
-### **Example Use Cases**
-- **English ↔ Chinese**: Set English as default, Chinese as second target
-- **Spanish ↔ Portuguese**: Set Spanish as default, Portuguese as second target  
-- **German ↔ English**: Set German as default, English as second target
+### **ตัวอย่างการใช้งาน**
+- **อังกฤษ ↔ ไทย**: กำหนดไทยเป็นหลัก อังกฤษเป็นรอง
+- **อังกฤษ ↔ จีน**: กำหนดจีนเป็นหลัก อังกฤษเป็นรอง
+- **สเปน ↔ โปรตุเกส**: กำหนดสเปนเป็นหลัก โปรตุเกสเป็นรอง
 
-## Translation Methods
+## วิธีการแปล
 
-EZ Translate offers multiple convenient ways to translate text on web pages:
+EZ Translate มีวิธีแปลข้อความบนเว็บเพจหลายแบบ:
 
-### 🖱️ **Context Menu Translation (NEW)**
-1. **Select text** on any webpage
-2. **Right-click** to open the context menu
-3. **Choose from translation options:**
-   - "Translate to [Primary Language]" - Uses your default target language
-   - "Translate to [Secondary Language]" - Uses your second target language
-   - "Open Settings" - Quick access to configuration
-4. **View results** in a centered popup with original text and translation
-5. **Copy instantly** using the built-in copy button
+### 🖱️ **แปลผ่านเมนูคลิกขวา (ใหม่)**
+1. **เลือกข้อความ** บนเว็บเพจใดก็ได้
+2. **คลิกขวา** เพื่อเปิดเมนูบริบท
+3. **เลือกตัวเลือกการแปล:**
+   - "แปลเป็น [ภาษาหลัก]" — ใช้ภาษาเป้าหมายหลัก
+   - "แปลเป็น [ภาษารอง]" — ใช้ภาษาเป้าหมายรอง
+   - "เปิดการตั้งค่า" — เข้าถึงการกำหนดค่าได้อย่างรวดเร็ว
+4. **ดูผลลัพธ์** ในป๊อปอัปกลางจอพร้อมข้อความต้นฉบับและการแปล
+5. **คัดลอกทันที** ด้วยปุ่มคัดลอกในตัว
 
-**Benefits:**
-- Fastest translation method with minimal clicks
-- Direct access without additional UI elements
-- Dynamic menu labels showing current language settings
-- Professional popup design with copy functionality
+**ข้อดี:**
+- วิธีแปลที่เร็วที่สุดด้วยคลิกน้อยที่สุด
+- เข้าถึงโดยตรงโดยไม่ต้องใช้องค์ประกอบ UI เพิ่มเติม
+- ป้ายชื่อเมนูแสดงการตั้งค่าภาษาปัจจุบัน
 
-### 📍 **Hover Translation**
-1. **Select text** on any webpage
-2. **Translation icon appears** near your selection
-3. **Click the icon** to see translation results
-4. **Copy or interact** with the result as needed
+### 📍 **แปลเมื่อวางเมาส์**
+1. **เลือกข้อความ** บนเว็บเพจใดก็ได้
+2. **ไอคอนแปลปรากฏขึ้น** ใกล้ข้อความที่เลือก
+3. **คลิกไอคอน** เพื่อดูผลการแปล
+4. **คัดลอกหรือใช้งาน** ผลลัพธ์ตามต้องการ
 
-### 🔲 **Popup Translation**
-1. **Click the extension icon** in your browser toolbar
-2. **Enter or paste text** in the input field
-3. **Click translate** to get results
-4. **Use additional features** like text-to-speech
+### 🔲 **แปลในป๊อปอัป**
+1. **คลิกไอคอน extension** ในแถบเครื่องมือเบราว์เซอร์
+2. **พิมพ์หรือวางข้อความ** ในช่องป้อนข้อมูล
+3. **คลิกแปล** เพื่อรับผลลัพธ์
+4. **ใช้ฟีเจอร์เพิ่มเติม** เช่น การอ่านออกเสียง
 
-### 📸 **Screenshot Translation (NEW)**
-1. **Click the screenshot icon** in the popup or use keyboard shortcut `Ctrl+Shift+S` / `Command+Shift+S`
-2. **Select an area** on the webpage by dragging your mouse
-3. **Click "Translate"** in the selection toolbar
-4. **View results** in a popup with recognized text and translation
-5. **Copy the translation** using the built-in copy button
+### 📸 **แปลผ่านภาพหน้าจอ (ใหม่)**
+1. **คลิกไอคอนภาพหน้าจอ** ในป๊อปอัปหรือใช้คีย์ลัด `Ctrl+Shift+S` / `Command+Shift+S`
+2. **เลือกพื้นที่** บนเว็บเพจโดยลากเมาส์
+3. **คลิก "แปล"** ในแถบเครื่องมือการเลือก
+4. **ดูผลลัพธ์** ในป๊อปอัปพร้อมข้อความที่รู้จักและการแปล
+5. **คัดลอกการแปล** ด้วยปุ่มคัดลอกในตัว
 
-**Benefits:**
-- Translate text in images, PDFs, and screenshots
-- AI-powered multimodal recognition for accurate text understanding
-- Works with any visual content on web pages
-- Quick keyboard shortcut for instant access
+**ข้อดี:**
+- แปลข้อความในรูปภาพ PDF และภาพหน้าจอ
+- การรู้จำ multimodal ด้วย AI เพื่อความเข้าใจข้อความที่แม่นยำ
+- ใช้งานได้กับเนื้อหาภาพทุกประเภทบนเว็บเพจ
 
-### ⚡ **Smart Features**
-- **Auto-fill**: Selected text automatically fills popup input
-- **Language detection**: Automatically switches between target languages
-- **Copy protection**: Enhanced popup stability for text selection
-- **Keyboard shortcuts**: ESC key to close popups quickly
-- **Screenshot shortcuts**: `Ctrl+Shift+S` / `Command+Shift+S` for instant screenshot mode
+### ⚡ **ฟีเจอร์อัจฉริยะ**
+- **กรอกอัตโนมัติ**: ข้อความที่เลือกกรอกช่องป้อนข้อมูลป๊อปอัปโดยอัตโนมัติ
+- **ตรวจจับภาษา**: สลับระหว่างภาษาเป้าหมายโดยอัตโนมัติ
+- **คีย์ลัด**: กด ESC เพื่อปิดป๊อปอัป และ `Ctrl+Shift+S` เพื่อเข้าโหมดภาพหน้าจอทันที
 
-## Tech Stack
+## เทคโนโลยีที่ใช้
 
 *   **Frontend:** `HTML`, `CSS`, `JavaScript`
-*   **Browser API:** `WebExtensions API` (compatible with modern browsers like Chrome, Firefox, Edge, etc.)
+*   **Browser API:** `WebExtensions API` (รองรับเบราว์เซอร์สมัยใหม่ เช่น Chrome, Firefox, Edge)
 *   **Speech Synthesis:** `Web Speech API`
 
-## Provider Details
+## รายละเอียดผู้ให้บริการ
 
-### 🌐 OpenRouter Integration (NEW)
+### 🌐 OpenRouter
 
-EZ Translate now supports **OpenRouter**, a unified API platform that provides access to hundreds of AI models from different providers:
+EZ Translate รองรับ **OpenRouter** แพลตฟอร์ม API แบบรวมศูนย์ที่ให้เข้าถึงโมเดล AI หลายร้อยรายการจากผู้ให้บริการต่างๆ:
 
-**Key Features:**
-- **🆓 Free Models Only**: Automatically filters to show only free models with "free" in their names
-- **🖼️ Image Support**: Only displays models that support image input for screenshot translation
-- **🎯 Smart Filtering**: Combines both criteria to show the most suitable models for translation tasks
-- **🔄 Unified Access**: Single API key to access models from OpenAI, Anthropic, Google, Meta, and more
-- **📊 Model Variety**: Choose from different model families and sizes based on your needs
+**ฟีเจอร์หลัก:**
+- **🆓 เฉพาะโมเดลฟรี**: กรองอัตโนมัติให้แสดงเฉพาะโมเดลฟรีที่มีคำว่า "free" ในชื่อ
+- **🖼️ รองรับรูปภาพ**: แสดงเฉพาะโมเดลที่รองรับรูปภาพสำหรับแปลภาพหน้าจอ
+- **🔄 เข้าถึงแบบรวมศูนย์**: API key เดียวเข้าถึงโมเดลจาก OpenAI, Anthropic, Google, Meta และอื่นๆ
 
-**Getting Started:**
-1. Visit [OpenRouter](https://openrouter.ai/keys) to get your API key
-2. In EZ Translate settings, switch to the "OpenRouter" tab
-3. Enter your API key and click "Fetch Models"
-4. Select from the filtered list of free, image-capable models
+**เริ่มต้นใช้งาน:**
+1. ไปที่ [OpenRouter](https://openrouter.ai/keys) เพื่อรับ API key
+2. ในการตั้งค่า EZ Translate สลับไปแท็บ "OpenRouter"
+3. ใส่ API key แล้วคลิก "Fetch Models"
+4. เลือกจากรายการโมเดลฟรีที่กรองแล้ว
 
-**Recommended OpenRouter Models:**
-- `meta-llama/llama-4-scout:free` - High-quality Llama model
-- `google/gemma-3-27b-it:free` - Latest Gemini with vision support
-- `qwen/qwen2.5-vl-32b-instruct:free` - Qwen's advanced reasoning capabilities
+**โมเดล OpenRouter ที่แนะนำ:**
+- `meta-llama/llama-4-scout:free`
+- `google/gemma-3-27b-it:free`
+- `qwen/qwen2.5-vl-32b-instruct:free`
 
-## Recommended Models
+### 🤖 MiniMax
 
-### Free Models by Provider
+EZ Translate รองรับ **MiniMax** ผู้ให้บริการ AI จากจีนที่มี API แบบ OpenAI-compatible:
 
-| Provider | Recommended Models | Notes |
+**เริ่มต้นใช้งาน:**
+1. ไปที่ [MiniMax Platform](https://platform.minimaxi.com/user-center/basic-information/interface-key) เพื่อรับ API key
+2. ในการตั้งค่า EZ Translate สลับไปแท็บ "MiniMax"
+3. ใส่ API key แล้วคลิก "Fetch Models"
+4. เลือกโมเดลที่ต้องการ
+
+## โมเดลที่แนะนำ
+
+### โมเดลฟรีแยกตามผู้ให้บริการ
+
+| ผู้ให้บริการ | โมเดลที่แนะนำ | หมายเหตุ |
 |----------|-------------------|-------|
-| **Google Gemini** | `gemma3:12b`<br>`gemma3:4b`<br>`gemma3n` | Free models, recommend Gemma 3 12B |
-| **Silicon Flow** | `qwen3:8b`<br>`glm-4:9b`<br>`qwen2.5:7b` | Free models, recommend Qwen3-8B |
-| **OpenRouter** | `meta-llama/llama-4-scout:free`<br>`google/gemma-3-27b-it:free`<br>`qwen/qwen2.5-vl-32b-instruct:free` | Free models with image support, auto-filtered |
-| **Ollama (Local)** | `qwen2:1.5b`<br>`llama3.1:8b`<br>`gemma2:2b` | Download and run locally |
+| **Google Gemini** | `gemma3:12b`<br>`gemma3:4b`<br>`gemma3n` | โมเดลฟรี แนะนำ Gemma 3 12B |
+| **Silicon Flow** | `qwen3:8b`<br>`glm-4:9b`<br>`qwen2.5:7b` | โมเดลฟรี แนะนำ Qwen3-8B |
+| **OpenRouter** | `meta-llama/llama-4-scout:free`<br>`google/gemma-3-27b-it:free`<br>`qwen/qwen2.5-vl-32b-instruct:free` | โมเดลฟรีรองรับรูปภาพ กรองอัตโนมัติ |
+| **Ollama (Local)** | `qwen2:1.5b`<br>`llama3.1:8b`<br>`gemma2:2b` | ดาวน์โหลดและรันในเครื่อง |
+| **MiniMax** | `MiniMax-Text-01`<br>`abab6.5s-chat` | โมเดล AI จากจีน |
 
-### Model Selection Tips
+### เคล็ดลับการเลือกโมเดล
 
-* **For Speed**: Choose smaller models (1.5B-3B parameters)
-* **For Quality**: Choose larger models (7B+ parameters)  
-* **For Privacy**: Use Ollama with local models
-* **For Cost**: All listed models are free to use
-* **For Variety**: Use OpenRouter to access hundreds of free models from different providers
+* **เพื่อความเร็ว**: เลือกโมเดลขนาดเล็ก (1.5B-3B พารามิเตอร์)
+* **เพื่อคุณภาพ**: เลือกโมเดลขนาดใหญ่ (7B+ พารามิเตอร์)
+* **เพื่อความเป็นส่วนตัว**: ใช้ Ollama กับโมเดลในเครื่อง
+* **เพื่อประหยัดค่าใช้จ่าย**: โมเดลทั้งหมดที่ระบุให้ใช้ฟรี
 
-*Last updated: September 19, 2025*
+## เปรียบเทียบคุณภาพการแปล
 
-## Translation Quality Comparison
+### ตัวอย่างการแปลอังกฤษเป็นจีน
 
-See how EZ Translate compares to other translation tools in terms of accuracy and fluency:
-
-### English to Chinese Translation Examples
-
-| Original Text | Google Translate API | EZ Translate |
+| ข้อความต้นฉบับ | Google Translate API | EZ Translate |
 |---------------|------------------|---------------|
-| "Supports one-time, recurring, and usage-based pricing models. Learn more about Subscriptions, Usage-based billing, and Invoicing." | "支持一次性，经常性和基于用法的定价模型。了解有关订阅，基于使用的计费和发票的更多信息。" | ✅ "支持一次性、周期性和基于使用情况的定价模型。了解更多关于订阅、基于使用情况的计费和发票的信息。" |
-| "If you're residing in one of China's territories, please select an option for your specific location. You won't be able to change it later." | "如果您居住在中国的一个领土之一，请为您的特定位置选择一个选项。您将稍后再进行更改。" | ✅ "如果您居住在中国的某个地区，请选择您所在的具体位置。您将无法在之后更改它。" |
+| "Supports one-time, recurring, and usage-based pricing models." | "支持一次性，经常性和基于用法的定价模型。" | ✅ "支持一次性、周期性和基于使用情况的定价模型。" |
 | "Super cool design and the app idea is a no brainer. Good work" | "超级酷的设计和应用程序的想法是无关紧要的。做得好" | ✅ "超酷的设计，这个应用的想法非常直观。做得好" |
 
-### Key Advantages
+### ข้อได้เปรียบหลัก
 
-* **Context Awareness**: EZ Translate understands context better than traditional MT
-* **Natural Fluency**: More natural and fluent translations that sound human-written
-* **Cultural Nuances**: Better handling of cultural expressions and idioms
-* **Technical Accuracy**: Superior translation of technical and specialized content
-* **Consistency**: More consistent terminology across different contexts
+* **เข้าใจบริบท**: EZ Translate เข้าใจบริบทได้ดีกว่าการแปลแบบดั้งเดิม
+* **คล่องแคล่วเป็นธรรมชาติ**: การแปลที่ฟังดูเป็นธรรมชาติเหมือนมนุษย์เขียน
+* **ความละเอียดทางวัฒนธรรม**: จัดการสำนวนและสุภาษิตได้ดีกว่า
+* **ความแม่นยำทางเทคนิค**: แปลเนื้อหาเฉพาะทางได้ดีเยี่ยม
 
-*Note: Translation quality may vary depending on the selected model and provider.*
+*หมายเหตุ: คุณภาพการแปลอาจแตกต่างกันขึ้นอยู่กับโมเดลและผู้ให้บริการที่เลือก*

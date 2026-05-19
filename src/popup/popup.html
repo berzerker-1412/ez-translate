@@ -33,9 +33,14 @@
                 </label>
             </div>
             <div class="right-icons">
+                <button id="upload-image-button" class="icon-button" title="Upload Image">🖼️</button>
+                <input type="file" id="image-file-input" accept="image/*" style="display:none;">
                 <button id="screenshot-translate-button" class="icon-button" data-i18n-title="screenshotTranslateButton" title="Image Translate">📸</button>
                 <button id="settings-icon-button" class="icon-button" data-i18n-title="settingsLink" title="Settings">⚙️</button>
             </div>
+        </div>
+        <div id="image-preview-container" style="display:none;">
+            <img id="image-preview" style="max-width:100%; max-height:120px; border-radius:6px; margin-top:6px;">
         </div>
     </div>
     <script src="popup.js"></script>

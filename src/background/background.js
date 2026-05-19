@@ -120,6 +120,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         console.log('[LLM-Translate] captureAndTranslateImage received', request.rect);
         handleCaptureAndTranslateImage(request.rect, sender, sendResponse);
         return true;
+    } else if (request.type === 'translateUploadedImage') {
+        handleTranslateUploadedImage(request.dataUrl, sendResponse);
+        return true;
     }
 });
 
@@ -727,6 +730,33 @@ async function handleCaptureAndTranslateImage(rect, sender, sendResponse) {
         sendResponse({ translation });
     } catch (e) {
         console.error('[LLM-Translate] handleCaptureAndTranslateImage failed:', e);
+        sendResponse({ error: e.message });
+    }
+}
+
+async function handleTranslateUploadedImage(dataUrl, sendResponse) {
+    try {
+        const { activeProvider } = await chrome.storage.local.get('activeProvider');
+        const provider = activeProvider || 'gemini';
+
+        let translation;
+        if (provider === 'gemini') {
+            translation = await visionTranslateGemini(dataUrl);
+        } else if (provider === 'siliconflow') {
+            translation = await visionTranslateOpenAICompatible(dataUrl);
+        } else if (provider === 'openrouter') {
+            translation = await visionTranslateOpenRouter(dataUrl);
+        } else if (provider === 'ollama') {
+            translation = await visionTranslateOllama(dataUrl);
+        } else if (provider === 'minimax') {
+            translation = await visionTranslateMinimax(dataUrl);
+        } else {
+            throw new Error(`未知的模型提供商: ${provider}`);
+        }
+
+        sendResponse({ translation });
+    } catch (e) {
+        console.error('[LLM-Translate] handleTranslateUploadedImage failed:', e);
         sendResponse({ error: e.message });
     }
 }

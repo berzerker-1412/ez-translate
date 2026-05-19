@@ -263,6 +263,47 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
 });
 
+// --- Upload Image Translate ---
+const uploadImageButton = document.getElementById('upload-image-button');
+const imageFileInput = document.getElementById('image-file-input');
+const imagePreviewContainer = document.getElementById('image-preview-container');
+const imagePreview = document.getElementById('image-preview');
+
+uploadImageButton.addEventListener('click', () => {
+    imageFileInput.value = '';
+    imageFileInput.click();
+});
+
+imageFileInput.addEventListener('change', () => {
+    const file = imageFileInput.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        const dataUrl = e.target.result;
+
+        // Show preview
+        imagePreview.src = dataUrl;
+        imagePreviewContainer.style.display = 'block';
+
+        // Pre-translate immediately
+        resultContainer.innerText = chrome.i18n.getMessage('statusTranslating');
+        speakButton.style.display = 'none';
+        copyButton.style.display = 'none';
+
+        chrome.runtime.sendMessage({ type: 'translateUploadedImage', dataUrl }, (response) => {
+            if (response && response.error) {
+                resultContainer.innerText = chrome.i18n.getMessage('statusError', [response.error]);
+            } else if (response && response.translation) {
+                resultContainer.innerText = response.translation;
+                speakButton.style.display = 'block';
+                copyButton.style.display = 'block';
+            }
+        });
+    };
+    reader.readAsDataURL(file);
+});
+
 // --- Screenshot Translate ---
 screenshotTranslateButton.addEventListener('click', async () => {
     try {
